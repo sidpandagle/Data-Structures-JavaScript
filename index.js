@@ -232,3 +232,71 @@
 // a.add(60);
 // console.log(a.average());
 // a.show();
+
+//-------------------List ADT----------------------
+function List() {
+  this.listSize = 0;
+  this.pos = 0;
+  this.dataStore = [];
+  this.find = find;
+  this.toString = toString;
+  this.lenght = length;
+  this.append = append;
+  this.remove = remove;
+  this.length = length;
+  // this.insert = insert;
+  // this.clear = clear;
+  // this.front = front;
+  // this.end = end;
+  // this.prev = prev;
+  // this.next = next;
+  // this.currPos = currPos;
+  // this.moveTo = moveTo;
+  // this.getElement = getElement;
+  // this.contains = contains;
+}
+
+//Add Element
+function append(element) {
+  this.dataStore[this.listSize++] = element;
+}
+
+//Find Element
+function find(element) {
+  for (var i = 0; i < this.dataStore.lenght; ++i) {
+    if (this.dataStore[i] == element) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+//Remove Element
+function remove(element) {
+  var foundAt = this.find(element);
+  if (foundAt > -1) {
+    this.dataStore = this.dataStore.splice(foundAt, 1);
+    --this.listSize;
+    return this.dataStore;
+  }
+  return this.dataStore;
+}
+
+//Lenght
+function length() {
+  return this.listSize;
+}
+
+//toString
+function toString() {
+  return this.dataStore;
+}
+
+var names = new List();
+names.append('a');
+names.append('b');
+names.append('c');
+console.log(names.toString());
+console.log(names.length());
+names.remove('a');
+console.log(names.toString());
